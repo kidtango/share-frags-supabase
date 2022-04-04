@@ -1,0 +1,30 @@
+.underlineButton {
+  background: linear-gradient(currentColor 0 0) var(--p, 0) 100% / var(--d, 0) 4px no-repeat;
+  transition: 0.2s, background-position 0s 0.2s;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  display: flex;
+  align-items: center;
+  color: rgba(161, 161, 170, 100);
+  padding: 4px;
+
+  &:hover {
+    --d: 100%;
+    --p: 100%;
+    color: rgba(244, 244, 245, 100);
+  }
+  &:active {
+    --p: 100%;
+    --P: 100%;
+  }
+}
+
+.active {
+  background-color: rgba(26, 179, 219, 20%);
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  color: rgba(244, 244, 245, 100);
+  --d: 100%;
+  --p: 100%;
+  color: #9dbbe1;
+}

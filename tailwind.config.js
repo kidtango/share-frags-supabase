@@ -20,7 +20,7 @@ module.exports = {
           error: '#F71D3A',
         },
       },
-      'aqua',
+      'cupcake',
     ],
     base: true,
     utils: true,

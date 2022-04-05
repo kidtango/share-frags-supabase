@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { SupabaseClient, Provider } from '@supabase/supabase-js'
 import { UserContextProvider, useUser } from './UserContext'
+
+import * as SocialIcons from './Icons'
 // @ts-ignore
 // import AuthStyles from './Auth.module.css'
 
@@ -147,46 +149,10 @@ function SocialAuth({
   ...props
 }: Props) {
   const buttonStyles: any = {
-    azure: {
-      backgroundColor: '#008AD7',
-      color: 'white',
-    },
-    bitbucket: {
-      backgroundColor: '#205081',
-      color: 'white',
-    },
-    facebook: {
-      backgroundColor: '#4267B2',
-      color: 'white',
-    },
-    github: {
-      backgroundColor: '#333',
-      color: 'white',
-    },
-    gitlab: {
-      backgroundColor: '#FC6D27',
-    },
-    google: {
-      backgroundColor: '#ce4430',
-      color: 'white',
-    },
-    twitter: {
-      backgroundColor: '#1DA1F2',
-      color: 'white',
-    },
-    apple: {
-      backgroundColor: '#000',
-      color: 'white',
-    },
-    discord: {
-      backgroundColor: '#404fec',
-      color: 'white',
-    },
-    twitch: {
-      backgroundColor: '#9146ff',
-      color: 'white',
-    },
+    facebook: 'bg-blue-500 hover:bg-blue-400 text-white',
+    google: 'bg-red-500 hover:bg-red-400 text-white',
   }
+
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -200,34 +166,31 @@ function SocialAuth({
     setLoading(false)
   }
 
+  const socialButtonStyles = (provider: string) =>
+    `gap-2 btn btn-block btn-ghost ${buttonStyles[provider]}`
+
   return (
     <div>
       {providers && providers.length > 0 && (
-        <React.Fragment>
-          <div>
-            <div>Sign in with</div>
-            <div>
-              {providers.map((provider) => {
-                // @ts-ignore
-                const AuthIcon = ''
-                return (
-                  <div
-                    key={provider}
-                    style={!verticalSocialLayout ? { flexGrow: 1 } : {}}
-                  >
-                    <div
-                      className="btn btn-primary"
-                      onClick={() => handleProviderSignIn(provider)}
-                    >
-                      {verticalSocialLayout && 'Sign up with ' + provider}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
+        <>
+          {providers.map((provider) => {
+            // @ts-ignore
+            const AuthIcon = SocialIcons[provider]
+            return (
+              <div key={provider} className="mb-4">
+                <div
+                  className={socialButtonStyles(provider)}
+                  onClick={() => handleProviderSignIn(provider)}
+                >
+                  <AuthIcon className={'text-white'} />
+                  {'Continue with ' + provider}
+                </div>
+              </div>
+            )
+          })}
+
           {/* {!onlyThirdPartyProviders && <Divider>or continue with</Divider>} */}
-        </React.Fragment>
+        </>
       )}
     </div>
   )
@@ -369,7 +332,6 @@ function EmailAuth({
 }
 
 function MagicLink({
-  setAuthView,
   supabaseClient,
   redirectTo,
 }: {
@@ -397,21 +359,24 @@ function MagicLink({
   }
 
   return (
-    <form id="auth-magic-link" onSubmit={handleMagicLinkSignIn}>
-      <div>
-        <div>
+    <div className="mt-10">
+      <div className="mb-10 divider">OR</div>
+      <form id="auth-magic-link" onSubmit={handleMagicLinkSignIn}>
+        <div className="flex justify-between gap-4">
           <input
+            className="w-full max-w-xs input input-bordered"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setEmail(e.target.value)
             }
           />
           <button className="btn btn-primary">Send magic link</button>
         </div>
-        <div>Sign in with password</div>
-        {message && <div>{message}</div>}
-        {error && <div>{error}</div>}
-      </div>
-    </form>
+        <div className="mt-4">
+          {message && <div className="text-success">{message}</div>}
+          {error && <div className="text-error">{error}</div>}
+        </div>
+      </form>
+    </div>
   )
 }
 

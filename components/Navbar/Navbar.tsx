@@ -2,22 +2,15 @@ import React, { Dispatch, SetStateAction, SyntheticEvent } from 'react'
 
 import { useRouter } from 'next/router'
 import { AiOutlineHeart } from 'react-icons/ai'
-// import { useSession, signout } from 'next-auth/client'
 
-// import LoginButton from 'src/components/auth/login-button/LoginButton'
-// import Button from 'src/components/buttons/Button'
-
-// import UserMenu from '../user-menu/UserMenu'
-import IconButton from '@components/buttons'
-import ShareFragLogo from './ShareFragLogo'
 import UserNav from './UserNav'
 
-interface INavbar {
-  isSidebarOpen: boolean
-  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>
-}
+// interface INavbar {
+//   isSidebarOpen: boolean
+//   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>
+// }
 
-const Navbar: React.FC<INavbar> = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const Navbar: React.FC<INavbar> = () => {
   // const [session, loading] = useSession()
   const router = useRouter()
   const session = true

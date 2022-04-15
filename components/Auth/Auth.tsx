@@ -59,21 +59,19 @@ function Auth({
   const verticalSocialLayout = socialLayout === 'vertical' ? true : false
 
   const Container = (props: any) => (
-    <div className={''}>
-      <div>
-        <SocialAuth
-          supabaseClient={supabaseClient}
-          verticalSocialLayout={verticalSocialLayout}
-          providers={providers}
-          socialLayout={socialLayout}
-          socialButtonSize={socialButtonSize}
-          socialColors={socialColors}
-          redirectTo={redirectTo}
-          onlyThirdPartyProviders={onlyThirdPartyProviders}
-          magicLink={magicLink}
-        />
-        {!onlyThirdPartyProviders && props.children}
-      </div>
+    <div>
+      <SocialAuth
+        supabaseClient={supabaseClient}
+        verticalSocialLayout={verticalSocialLayout}
+        providers={providers}
+        socialLayout={socialLayout}
+        socialButtonSize={socialButtonSize}
+        socialColors={socialColors}
+        redirectTo={redirectTo}
+        onlyThirdPartyProviders={onlyThirdPartyProviders}
+        magicLink={magicLink}
+      />
+      {!onlyThirdPartyProviders && props.children}
     </div>
   )
 

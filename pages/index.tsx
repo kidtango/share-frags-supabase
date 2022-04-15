@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 
-import Layout from '@components/common/Layout/Layout'
-import SearchBar from '@components/search-bar'
+import Layout from '@components/common/Layout'
 import { useTheme } from 'next-themes'
 
 export default function Home() {

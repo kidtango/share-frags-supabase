@@ -3,9 +3,10 @@
 import React from 'react'
 import { AiFillCamera, AiOutlineHeart } from 'react-icons/ai'
 import { HiPencil } from 'react-icons/hi'
-import { BsShop } from 'react-icons/bs'
-
+import { BsShop, BsSliders } from 'react-icons/bs'
+import { FaShippingFast } from 'react-icons/fa'
 import Layout from '@components/common/Layout'
+import { range } from 'lodash'
 
 export default function Profile() {
   const hasImage = true
@@ -27,7 +28,9 @@ export default function Profile() {
         {/* Name Section */}
         <div className="flex items-baseline gap-4">
           <div>
-            <div className="text-4xl font-semibold">Cuong Tang</div>
+            <div className="text-4xl font-semibold tracking-wide">
+              Cuong Tang
+            </div>
             <div className="">Reef Farmer</div>
           </div>
           <div className="btn-circle btn">
@@ -79,8 +82,42 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="mt-6">
-        <h1 className="text-2xl font-bold">Favorite items</h1>
+      <div className="flex justify-between mt-6">
+        <h1 className="text-2xl font-bold tracking-wide">Favorite items</h1>
+        <button className="gap-1 font-semibold rounded-full btn btn-outline btn-md">
+          <span>
+            <BsSliders />
+          </span>
+          <span className="normal-case">Filters</span>
+        </button>
+      </div>
+      {/* Item cards */}
+      <div className="flex flex-wrap gap-6 mt-10">
+        {range(0, 10).map((e) => (
+          <div
+            className="w-full transition-all hover:shadow-xl card hover:cursor-pointer md:w-56"
+            key={e}
+          >
+            <figure className="relative">
+              <div className="absolute top-0 right-0">
+                <div className="p-2 text-white rounded-full hover:text-accent">
+                  <AiOutlineHeart className="w-12 h-12" />
+                </div>
+              </div>
+              <img
+                src="https://e4snhovjacp.exactdn.com/wp-content/uploads/2022/04/RD3.C6.040622A-1.jpg?strip=all&lossy=1&ssl=1"
+                alt="Shoes"
+                className="object-cover"
+              />
+              <div className="absolute flex items-center gap-2 p-2 px-4 text-xl font-semibold bg-teal-100 rounded-full bottom-4 left-4">
+                <span>
+                  <FaShippingFast />
+                </span>
+                <span>$50.00</span>
+              </div>
+            </figure>
+          </div>
+        ))}
       </div>
     </>
   )

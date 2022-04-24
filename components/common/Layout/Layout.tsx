@@ -20,7 +20,7 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div className={styles.root}>
       <Navbar />
-      <main className="p-6">{children}</main>
+      <main className="p-6 mb-24">{children}</main>
       <footer className="fixed bottom-0 left-0 items-center p-4 footer bg-neutral text-neutral-content">
         <div className="items-center grid-flow-col">
           <svg

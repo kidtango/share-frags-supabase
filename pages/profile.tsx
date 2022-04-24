@@ -6,6 +6,7 @@ import { HiPencil } from 'react-icons/hi'
 import { BsShop, BsSliders } from 'react-icons/bs'
 import { FaShippingFast } from 'react-icons/fa'
 import Layout from '@components/common/Layout'
+import Card, { CardShop } from '@components/Card'
 import { range } from 'lodash'
 
 export default function Profile() {
@@ -92,31 +93,10 @@ export default function Profile() {
         </button>
       </div>
       {/* Item cards */}
-      <div className="flex flex-wrap gap-6 mt-10">
-        {range(0, 10).map((e) => (
-          <div
-            className="w-full transition-all hover:shadow-xl card hover:cursor-pointer md:w-56"
-            key={e}
-          >
-            <figure className="relative">
-              <div className="absolute top-0 right-0">
-                <div className="p-2 text-white rounded-full hover:text-accent">
-                  <AiOutlineHeart className="w-12 h-12" />
-                </div>
-              </div>
-              <img
-                src="https://e4snhovjacp.exactdn.com/wp-content/uploads/2022/04/RD3.C6.040622A-1.jpg?strip=all&lossy=1&ssl=1"
-                alt="Shoes"
-                className="object-cover"
-              />
-              <div className="absolute flex items-center gap-2 p-2 px-4 text-xl font-semibold bg-teal-100 rounded-full bottom-4 left-4">
-                <span>
-                  <FaShippingFast />
-                </span>
-                <span>$50.00</span>
-              </div>
-            </figure>
-          </div>
+      <div className="flex flex-wrap justify-between gap-4 mt-10">
+        {range(0, 12).map((e) => (
+          // <Card key={e} />
+          <CardShop key={e} />
         ))}
       </div>
     </>

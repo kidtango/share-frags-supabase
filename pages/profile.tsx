@@ -42,8 +42,8 @@ export default function Profile() {
 
       <div className="flex mt-10 space-x-4">
         {/* Favorite items section */}
-        <div className="">
-          <div className="">
+        <div>
+          <div>
             <button className="flex items-center text-center transition-all shadow-md opacity-75 w-36 card bg-base-100 ring-2 ring-base-200 hover:bg-base-200 hover:ring-offset-2 hover:opacity-100">
               <div className={`${hasImage ? 'p-0 card-body' : 'card-body'}`}>
                 {hasImage ? (
@@ -85,12 +85,22 @@ export default function Profile() {
 
       <div className="flex justify-between mt-6">
         <h1 className="text-2xl font-bold tracking-wide">Favorite items</h1>
-        <button className="gap-1 font-semibold rounded-full btn btn-outline btn-md">
-          <span>
-            <BsSliders />
-          </span>
-          <span className="normal-case">Filters</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <button className="gap-1 font-semibold rounded-full btn btn-outline btn-md">
+            <span>
+              <BsSliders />
+            </span>
+            <span className="normal-case">Filters</span>
+          </button>
+          <div className="form-control">
+            <label className="space-x-2 cursor-pointer label">
+              <input type="checkbox" checked={true} className="checkbox" />
+              <span className="font-semibold label-text">
+                Only active shops
+              </span>
+            </label>
+          </div>
+        </div>
       </div>
       {/* Item cards */}
       <div className="flex flex-wrap justify-between gap-4 mt-10">
